@@ -1,10 +1,10 @@
-package pl.piegoose.githubask.github;
+package pl.piegoose.githubask.infrastructure.github;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import pl.piegoose.githubask.github.dto.BranchResponse;
-import pl.piegoose.githubask.github.dto.GitHubResponse;
+import pl.piegoose.githubask.infrastructure.github.dto.BranchResponse;
+import pl.piegoose.githubask.infrastructure.github.dto.GitHubResponse;
 
 import java.util.List;
 @FeignClient(name = "github", url = "${github.base-url}")

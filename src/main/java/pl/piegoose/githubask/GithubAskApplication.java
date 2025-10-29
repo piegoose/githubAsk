@@ -1,19 +1,13 @@
-package pl.piegoose.githubask.githubproxy.feignclient.dto.infrastructure;
+package pl.piegoose.githubask;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.event.EventListener;
-import pl.piegoose.githubask.githubproxy.GitHubProxy;
-import pl.piegoose.githubask.githubproxy.ResponseOwnerLoginDto;
-import pl.piegoose.githubask.githubproxy.feignclient.dto.ResponseBranchDto;
+import pl.piegoose.githubask.infrastructure.github.GitHubProxy;
 
-import java.util.List;
-
-@EnableFeignClients(basePackages = "pl.piegoose.githubask.githubproxy")
 @SpringBootApplication
+@EnableFeignClients(basePackages = "pl.piegoose.githubask")
 @Log4j2
 public class GithubAskApplication {
 
@@ -27,13 +21,13 @@ public class GithubAskApplication {
         SpringApplication.run(GithubAskApplication.class, args);
     }
 
-    @EventListener(ApplicationStartedEvent.class)
-    public void run() {
-        List<ResponseOwnerLoginDto> repoNameAndOwnerLogin = proxy.getRepoNameAndOwnerLogin("kalqa");
-        log.info(repoNameAndOwnerLogin);
-        ResponseBranchDto brachWithLastCommitAndSha = proxy.getBrachWithLastCommitAndSha("kalqa", "LottoJJR");
-        log.info(brachWithLastCommitAndSha);
-    }
+//    @EventListener(ApplicationStartedEvent.class)
+//    public void run() {
+//        List<GitHubResponse> repoNameAndOwnerLogin = proxy.getRepoNameAndOwnerLogin("kalqa");
+//        log.info(repoNameAndOwnerLogin);
+//        List<BranchResponse> brachWithLastCommitAndSha = proxy.getBrachWithLastCommitAndSha("kalqa", "LottoJJR");
+//        log.info(brachWithLastCommitAndSha);
+//    }
 
 
 }

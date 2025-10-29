@@ -1,8 +1,6 @@
-package pl.piegoose.githubask;
-
-import pl.piegoose.githubask.infrastructure.github.dto.RepoInfo;
+package pl.piegoose.githubask.infrastructure.github.dto;
 
 import java.util.Map;
 
-public record ResponseInfoGitHub(Map<String, RepoInfo> repositoryInfo) {
+public record ResponseInfoGitHubDto(Map<String, RepoInfo> repositoryInfo) {
 }

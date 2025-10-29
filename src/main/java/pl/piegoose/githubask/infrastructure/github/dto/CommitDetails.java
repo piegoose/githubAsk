@@ -1,4 +1,4 @@
-package pl.piegoose.githubask.github.dto;
+package pl.piegoose.githubask.infrastructure.github.dto;
 
 public record CommitDetails(
         String message

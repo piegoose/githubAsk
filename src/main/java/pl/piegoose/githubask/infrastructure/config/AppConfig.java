@@ -1,4 +1,4 @@
-package pl.piegoose.githubask.config;
+package pl.piegoose.githubask.infrastructure.config;
 
 import feign.Logger;
 import feign.RequestInterceptor;

@@ -1,15 +1,5 @@
-spring.application.name=githubAsk
-2
-server.port=8080
-3
-github:
-4
-token:${GIT_HUB_TOKEN}
-Result
-github: ''
 server:
-port: 8080
-spring:
-application:
-name: githubAsk
-token: ${GIT_HUB_TOKEN}_TOKEN}
+  port: 8081
+github:
+  base-url: https://api.github.com
+  token: ${GITHUB_TOKEN}
