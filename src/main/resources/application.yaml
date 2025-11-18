@@ -1,5 +1,0 @@
-server:
-  port: 8081
-github:
-  base-url: https://api.github.com
-  token: ${GITHUB_TOKEN}
