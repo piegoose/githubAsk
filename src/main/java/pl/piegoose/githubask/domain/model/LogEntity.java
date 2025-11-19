@@ -15,10 +15,6 @@ public class LogEntity {
     @Column(nullable = false)
     public String name;
 
-    public LogEntity() {
-        this.name = name;
-        this.owner = owner;
-    }
 
     @Override
     public String toString() {

@@ -16,11 +16,17 @@ public class LogRetriver {
     private final GitRepository repository;
 
     public Optional<LogEntity> findById(Long id) {
-       return repository.findById(id);
+        return repository.findById(id);
     }
 
     public void existById(Long id) {
-            findById(id)
-                    .orElseThrow(()-> new LogNotFoundException("Log with id :"+id+" not found.."));
+        findById(id)
+                .orElseThrow(() -> new LogNotFoundException("Log with id :" + id + " not found.."));
+    }
+
+    public void updateById(Long id, LogEntity updatedLog) {
+        existById(id);
+        repository.updateById(id, updatedLog);
+        log.info("Log with id: " + id + " has been updated");
     }
 }

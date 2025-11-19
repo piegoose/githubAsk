@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.piegoose.githubask.domain.model.LogEntity;
 import pl.piegoose.githubask.domain.service.GitHubService;
+import pl.piegoose.githubask.domain.service.LogAdder;
 import pl.piegoose.githubask.domain.service.LogDeleter;
 import pl.piegoose.githubask.domain.service.LogRetriver;
 import pl.piegoose.githubask.infrastructure.error.InvalidHeaderException;
@@ -25,6 +26,7 @@ public class GitHubRestController {
     private final GitHubService service;
     private final LogDeleter deleter;
     private final LogRetriver logRetriver;
+    private final LogAdder logAdder;
 
     @GetMapping("{owner}")
     public ResponseEntity<ResponseInfoGitHubDto> getUserInfo(
@@ -43,11 +45,25 @@ public class GitHubRestController {
         deleter.deleteById(id);
         return ResponseEntity.ok("Log usuniety");
     }
+
     @GetMapping("/db/{id}")
-    public ResponseEntity<String> findById(@PathVariable Long id)
-    {
+    public ResponseEntity<String> findById(@PathVariable Long id) {
         Optional<LogEntity> byId = logRetriver.findById(id);
-        return ResponseEntity.ok("Log: "+ byId);
+        return ResponseEntity.ok("Log: " + byId);
+    }
+
+    @PostMapping("/db/add")
+    public ResponseEntity<LogEntity> addLog(
+            @RequestBody LogEntity newLog) {
+        LogEntity savedLog = logAdder.addLog(newLog);
+        return ResponseEntity.ok(savedLog);
+    }
+    @PostMapping("/db/update/{id}")
+    public ResponseEntity<LogEntity> updateLog(
+            @PathVariable Long id,
+            @RequestBody LogEntity updatedLog){
+        logRetriver.updateById(id,updatedLog);
+        return ResponseEntity.ok((updatedLog));
     }
 
 

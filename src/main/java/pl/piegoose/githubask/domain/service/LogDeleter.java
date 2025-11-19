@@ -17,7 +17,6 @@ public class LogDeleter {
         logRetriver.existById(id);
         repository.deleteById(id);
         log.info("Log with id: " + id + " has been deleted");
-
     }
 
 }
