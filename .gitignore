@@ -34,3 +34,5 @@ build/
 ###token
 .env
 
+.env
+.env
